@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <time.h>
 
-extern const int DATA_SET_SCALE; 
+const int DATA_SET_SCALE = 100; 
 /*
  * Generate random data set of size length with 
  * random data in the range [0~DATA_SET_SCALE-1]
@@ -31,8 +31,15 @@ void parray(int *array, int start, int end){
     printf("Size:%d [", end - start);
     int i = 0;
     for(i = start; i < end; i++){
-        printf(" %d ",array[i] 
+        printf(" %d ",array[i]);
     }
     printf("]\n");
+}
+/**
+ * Convert input clocks into seconds and prints it.
+ * Always used to print a funtions execute time.
+ */
+void pextime(clock_t start, clock_t end, char *funame){
+   printf("[%s] %f\n", funame, (double)(end-start)/CLOCKS_PER_SEC); 
 }
 #endif
